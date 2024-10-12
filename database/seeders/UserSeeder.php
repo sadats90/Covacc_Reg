@@ -14,18 +14,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create a Faker instance
+    
         $faker = Faker::create();
 
-        // Insert random users
-        foreach (range(1, 50) as $index) { // Adjust the range as needed for the number of users
+       
+        foreach (range(1, 50) as $index) { 
             User::create([
-                'nid' => $faker->unique()->numerify('NID#####'), // Generate a unique National ID
-                'name' => $faker->name, // Random name
-                'email' => $faker->unique()->safeEmail, // Random unique email
-                'vaccine_center_id' => $faker->numberBetween(1, 31), // Random vaccine center ID between 1 and 31
-                'password' => '11111111', // Default password (bcrypt)
-                'status' => 'Not scheduled', // Default status
+                'nid' => $faker->unique()->numberBetween(100000, 999999), 
+                'name' => $faker->name, 
+                'email' => $faker->unique()->safeEmail, 
+                'vaccine_center_id' => $faker->numberBetween(1, 29), 
+                'password' => '11111111', 
+                'status' => 'Not scheduled', 
                 'scheduled_date' => Carbon::now()->addDays(rand(7, 15))->toDateString(),
             ]);
         }
